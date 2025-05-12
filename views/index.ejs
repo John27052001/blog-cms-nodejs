@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Blog</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>📝 My Blog</h1>
+  <a href="/new">+ New Post</a>
+  <ul>
+    <% posts.forEach(post => { %>
+      <li>
+        <h2><%= post.title %></h2>
+        <p><%= post.content %></p>
+        <small><%= post.createdAt.toDateString() %></small>
+        <form action="/edit/<%= post._id %>" method="GET">
+          <button>Edit</button>
+        </form>
+        <form action="/delete/<%= post._id %>" method="POST">
+          <button>Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
